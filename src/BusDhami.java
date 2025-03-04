@@ -1,267 +1,67 @@
 /*
 Name: Karan Dhami
 Date: 3/3/25
-self grade based on the given requirmnets and the correctness of the output
-Testimony:  I didn't cheat
-
+self grade based on the given requirmnets and the correctness of the output: 100%
+Testimony:  I didn't cheat Karan Dhami
+this code involves several classes and you must call to a parent class as a child class to get certain information.
+And to use said information in functions to figure out whether the bus is full or the or if there is a specific person aboard the bus that can be removed
 Your code must genearte a very similar output. Make sure create your own list of the passengers.
 Do not copy the given passengers. The driver ahs 20 points. Any copy from the sample output will cause losing points
 */
 
-interface List
-{
-    void add(Object o);//adds a passenger to the end of the list
-
-    void delete(String first, String last);// delete a passenger from the list
-
-    void print(String latsName);//prints all the passengeres with the same last name
-
-    boolean search(String first, String last);//search for a particular passenger with the given first and last name
-
-    boolean isFull();//returns true if the buss is full, meaning all the eats are taken
-}
-
-public class BusDhami
-{
-    //no code here
-}
-
-/*The person class is complete and there is no need to add any code to it*/
-class Person
-{
-    private String first;
-    private String last;
-    private String phone;
-    private String email;
-    private String id;
-
-    public Person(String first, String last, String phone, String email, String id)
-    {
-        this.first = first;
-        this.last = last;
-        this.phone = phone;
-        this.email = email;
-        this.id = id;
-    }
-
-    public String getFirst()
-    {
-        return first;
-    } // getter
-
-    public void setFirst(String newFirst)
-    {
-        first = newFirst;
-    } // setter
-
-    public String getLast()
-    {
-        return last;
-    }
-
-    public void setLast(String newLast)
-    {
-        last = newLast;
-    }
-
-    public String getPhone()
-    {
-        return phone;
-    }
-
-    public void setPhone(String newPhone)
-    {
-        phone = newPhone;
-    }
-
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String newEmail)
-    {
-        email = newEmail;
-    }
-
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(String newId)
-    {
-        id = newId;
-    }
-
-    public String toString()
-    {
-        return "first: " + first + ",last =  " + last + ",phone= " + phone + ",email= " + email + " ID = " + id;
-    }
-
-    public boolean equals(Object o)
-    {
-        if (o instanceof Person) return this.id.equalsIgnoreCase(((Person) o).id);
-        else return false;
-    }
-
-}
-
 /*
-Passenger class extends the person class. every passenger has row number, seat number, number of luggeges
-
+public class BusDhami
+    {
+    //no code here
+    }
 */
-class Passenger extends Person // getting attributes of person and using them in Passanger class//extends Person    Must make sure that passenger class extends Person class
-{
-
-
-    public Passenger(String first, String last, String phone, String email, String id)
-    {
-        super(first, last, phone, email, id); // super means grabbing from parent class and being able to use them in passanger class
-    }
-}
-
-/*Compelet code is given No need to add any code*/
-class Vehicle
-{
-    private String plateNumber;
-    private String make;
-    private String model;
-    private String fuelType;
-    private boolean isElectric;
-
-    public Vehicle(String plateNumber, String make, String model, String fuelType, boolean isElectric)
-    {
-        this.plateNumber = plateNumber;
-        this.make = make;
-        this.model = model;
-        this.fuelType = fuelType;
-        this.isElectric = isElectric;
-
-    }
-
-    public boolean getElectric()
-    {
-        return isElectric;
-    }
-
-    public void setElectric(boolean electric)
-    {
-        isElectric = electric;
-    }
-
-    public String getPlane()
-    {
-        return plateNumber;
-    }
-
-    public String getModel()
-    {
-        return model;
-    }
-
-    public void setModel(String newModel)
-    {
-        model = newModel;
-    }
-
-    public String getMake()
-    {
-        return make;
-    }
-
-    public void setMake(String newMake)
-    {
-        make = newMake;
-    }
-
-    public String fuelType()
-    {
-        return fuelType;
-    }
-
-    public void setPlate(String newPlate)
-    {
-        plateNumber = newPlate;
-    }
-
-    public void setFuel(String newFuel)
-    {
-        fuelType = newFuel;
-    }
-
-    public String toString()
-
-    {
-        String s = "Yes";
-        if (!isElectric) s = " No";
-
-        return "Make= " + make + " , Model = " + model + "Plate= " + plateNumber + "Fuel type = " + fuelType + "Electric: " + s;
-    }
-
-    public boolean equals(Object o)
-    {
-        if (o instanceof Vehicle v) {
-            return this.plateNumber.equalsIgnoreCase(v.plateNumber);
-        }
-        return false;
-    }
-
-}
-
-class Bus extends Vehicle // getting attributes from Vehicle class and using them in Bus Class//extends Vehicle  implements List  : must make sure that passenger inmplements the List
-{
-    public Bus(String plateNumber, String make, String model, String fuelType, boolean isElectric)
-    {
-        super(plateNumber, make, model, fuelType, isElectric); // super means grabbing from parent class Vehicle
-    }
-    //declare all the instance variables
-
-
-    // create the constructor
-
-
-    //create the getter methods
-
-
-    //implemenbt all the methods listed in the List interface
-
-
-}
 
 class Driver
-{
-    public static void main(String[] args)
     {
+    public static void main(String[] args)
+        {
+        Person driver = new Person("John", "Doe", "123-456-7890", "john.doe@email.com", "D123");
+        Bus bus = new Bus("8a18s1w", "Mercedes", "EX-S Bus", "91 Octane fuel", false, "LA", "Sacramento", 11, 2400, 1212, 5);//create a Bus object
 
-        //create a Bus object
+        bus.setDriver(driver);// contains all the bus drivers information
+        Passenger passenger1 = new Passenger("John", "Smith", "123-456-7890", "john.smith@email.com", "1", "2", "3", "2");
+        Passenger passenger2 = new Passenger("Emily", "Smith", "987-654-3210", "emily.smith@email.com", "2", "", "3", "2");
+        Passenger passenger3 = new Passenger("Michael", "Brown", "555-111-2222", "michael.brown@email.com", "3", "1", "3", "2");
+        Passenger passenger4 = new Passenger("Sarah", "Brown", "444-222-3333", "sarah.brown@email.com", "4", "1", "3", "2");
+        Passenger passenger5 = new Passenger("David", "Williams", "666-777-8888", "david.williams@email.com", "5", "1", "3", "2");
+        Passenger passenger6 = new Passenger("Jessica", "Williams", "999-000-1111", "jessica.williams@email.com", "6", "1", "3", "2");
+        Passenger passenger7 = new Passenger("Daniel", "Johnson", "111-222-3333", "daniel.johnson@email.com", "7", "1", "3", "2");
+        Passenger passenger8 = new Passenger("Laura", "Johnson", "222-333-4444", "laura.johnson@email.com", "8", "2", "3", "2");
+        Passenger passenger9 = new Passenger("James", "Taylor", "333-444-5555", "james.taylor@email.com", "9", "3", "3", "2");
+        Passenger passenger10 = new Passenger("Anna", "Taylor", "777-888-9999", "anna.taylor@email.com", "10", "3", "3", "2");
 
+        bus.add(passenger1);
+        bus.add(passenger2);
+        bus.add(passenger3);
+        bus.add(passenger4);
+        bus.add(passenger5);
+        bus.add(passenger6);
+        bus.add(passenger7);
+        bus.add(passenger8);
+        bus.add(passenger9);
+        bus.add(passenger10);
 
-        //call the setDriver method to set the driver for the bus
-
-        //create 10 passengers of your choice. be sure to create some passengers with the same last name
-
-
-        //call the add method to add each passenger to the bus
-
-
-        //test toString method from the Bus class
-
-
-        //call seatsLeft method
-
-        //call print method to print the list of the passengers with the same last name
-
-        //call the seach method to search for a particular passenger in the Bus
-
-        //call delete method to delete a passenger of your choice from the list
-
-        //call the desitiantion of the bus
-
-        //call the origion of the bus
-
-        //call the tostring method
-
-
+        System.out.println("The starting position for this trip is : " + bus.getOrigin());
+        System.out.println("**************************************************\n");
+        System.out.println("The final destination for this trip is : " + bus.getDestination());
+        System.out.println("**************************************************\n");
+        System.out.print("Driver of the bus: ");
+        System.out.println(bus.getDriver());
+        System.out.println("**************************************************\n");
+        System.out.println(bus);//test toString method from the Bus class
+        System.out.println("**************************************************\n");
+        System.out.println("There is  " + (bus.getCapacity() - bus.getPassengerCount()) + " seat(s) left on the bus");//call seatsLeft method
+        System.out.println("**************************************************\n");
+        bus.print("Taylor");//call print method to print the list of the passengers with the same last name
+        System.out.println("**************************************************\n");
+        boolean found = bus.search("John", "Smith");//call the seach method to search for a particular passenger in the Bus
+        System.out.println("Searching for Micheal Brown, was he found? " + found);
+        System.out.println("**************************************************\n");
+        bus.delete("Anna", "Taylor");//call delete method to delete a passenger of your choice from the list
+        }
     }
-}
